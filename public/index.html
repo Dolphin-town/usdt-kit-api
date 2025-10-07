@@ -26,7 +26,7 @@
     async function buy(){
       const price = parseInt(document.getElementById('price').textContent);
       document.getElementById('buyBtn').disabled=true;
-      const r = await fetch('https://usdt-kit-api.onrender.com/webhook',
+      const r = await fetch('https://usdt-kit-api.onrender.com/create-invoice',
         {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({price})});
       const j = await r.json();
       if(j.pay_url) window.open(j.pay_url,'_self');
