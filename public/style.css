@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root{--bg:#0f0f0f;--card:#1a1a1a;--acc:#00e5ff;--text:#fff;--gray:#b3b3b3}
+body{background:var(--bg);color:var(--gray);font-family:Inter,Helvetica,Arial;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+.card{background:var(--card);border-radius:12px;padding:2.5rem 2rem;max-width:560px;width:90%;box-shadow:0 8px 24px rgba(0,229,255,.08)}
+h1{color:var(--text);font-size:2rem;margin:0 0 .5rem}
+button{width:100%;height:56px;border:0;border-radius:12px;background:var(--acc);color:#000;font-weight:700;font-size:1.1rem;cursor:pointer;transition:.2s}
+button:hover{filter:brightness(1.1)} button:active{transform:scale(.98)}
+.bump{display:flex;align-items:center;justify-content:space-between;margin:1.2rem 0;cursor:pointer}
+.switch{position:relative;width:44px;height:24px;background:#444;border-radius:12px}
+.switch::after{content:'';position:absolute;width:20px;height:20px;background:var(--text);border-radius:50%;top:2px;left:2px;transition:.3s}
+input:checked+.switch{background:var(--acc)} input:checked+.switch::after{left:22px} input{display:none}
+.scar{font-size:.8rem;text-align:center;margin-top:1rem}
