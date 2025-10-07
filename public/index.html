@@ -24,25 +24,14 @@
       document.getElementById('price').textContent = p;
     }
     async function buy(){
-  const btn = document.getElementById('buyBtn');
-  const price = parseInt(document.getElementById('price').textContent);
-  btn.disabled = true;                       // lock while working
-  try{
-    const res = await fetch('https://usdt-kit-api.onrender.com/create-invoice', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({price})
-    });
-    const data = await res.json();
-    if(data.pay_url) window.location.href = data.pay_url;  // go to checkout
-    else alert('Server error – please refresh.');
-  }catch(err){
-    console.error(err);
-    alert('Network error – please refresh.');
-  }finally{
-    btn.disabled = false;                    // unlock no matter what
-  }
-}
+      const price = parseInt(document.getElementById('price').textContent);
+      document.getElementById('buyBtn').disabled=true;
+      const r = await fetch('https://usdt-kit-api.onrender.com/create-invoice',
+        {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({price})});
+      const j = await r.json();
+      if(j.pay_url) window.open(j.pay_url,'_self');
+      else alert('Error – refresh');
+    }
   </script>
 </body>
 </html>
