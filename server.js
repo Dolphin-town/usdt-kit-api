@@ -12,7 +12,7 @@ const PRODUCTS = {199:'kit', 348:'kit+audit'};
 const API_KEY    = process.env.NP_API_KEY;
 const IPN_SECRET = process.env.IPN_SECRET;
 const HOST       = `https://${process.env.PROJECT_DOMAIN}.onrender.com`;
-const API_URL    = 'https://api.nowpayments.io/v1';   // swap to https://api.nowpayments.io/v1 when live
+const API_URL    = 'https://api.sandbox.nowpayments.io/v1';   // swap to https://api.nowpayments.io/v1 when live
 
 // health check
 app.get('/', (req,res)=>res.send('API ok'));
