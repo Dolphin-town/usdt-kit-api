@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Crypto Kit – USDT only</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="card">
+    <h1>Launch a USDT-payable landing page in 15 minutes</h1>
+    <p>Template + checkout + zip. Copy. Paste. Collect crypto.</p>
+    <label class="bump">
+      <input type="checkbox" id="bump" onchange="togglePrice()">
+      <span class="switch"></span>
+      Add AI Audit PDF (+149 USDT)
+    </label>
+    <button id="buyBtn" onclick="buy()">Get Kit – <span id="price">199</span> USDT</button>
+    <p class="scar">Slots today: <span id="slots">9</span></p>
+  </main>
+  <script>
+    function togglePrice(){
+      const p = document.getElementById('bump').checked ? 348 : 199;
+      document.getElementById('price').textContent = p;
+    }
+    async function buy(){
+      const price = parseInt(document.getElementById('price').textContent);
+      document.getElementById('buyBtn').disabled=true;
+      const r = await fetch('https://YOUR-RENDER-URL.onrender.com/create-invoice',
+        {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({price})});
+      const j = await r.json();
+      if(j.pay_url) window.open(j.pay_url,'_self');
+      else alert('Error – refresh');
+    }
+  </script>
+</body>
+</html>
